@@ -131,8 +131,9 @@ function loadScreenshot(data) {
 }
 
 var urlIds = []; //empty array for later use in function
-function addButtons(){  //adds buttons to page
-	var buttons = ['<button id="amazon" class="buttons">Amazon</button>', //button tags in array with unique ids, CSS class and names
+function addButtons(){  //adds buttons to page  //button tags in array with unique ids, CSS class and names
+	var buttons = ['<button id="amazon" class="buttons">Amazon</button>',
+	'<button id="walmart" class="buttons">Walmart</button>',
 	'<button id="ebates" class="buttons">Ebates</button>',
 	'<button id="rmn" class="buttons space">RetailMeNot</button>', 
 	'<button id="walmart_ebates" class="buttons">Ebates Walmart</button>',
@@ -143,11 +144,12 @@ function addButtons(){  //adds buttons to page
 	'<button id="walmart_rmn" class="buttons">RetailMeNot Walmart</button>', 
 	'<button id="amazon_rmn" class="buttons">RetailMeNot Amazon</button>', 
 	'<button id="target_rmn" class="buttons">RetailMeNot Target</button>'];
-	for(i = 0; i < buttons.length-10; i++){//iterates through all <button> tags in buttons array
+	for(i = 0; i < buttons.length-11; i++){//iterates through all <button> tags in buttons array
 		$('.buttons-container').append(buttons)//appends each button in array to page
 	}
 	
 	urlIds =[ //key value pair array includes url id's for unique id of each API call
+	{url:'a29d2d9c-a087-4d27-8e22-251f525ecff6', id:'walmart'},
 	{url:'146eeac3-4ab2-48db-80d7-df0f1c75c2e0', id:'walmart_ebates'},
 	{url: '212e608a-3929-4e65-810e-26fafe796f05', id:'amazon'},
 	{url: '3c809f22-13f6-49db-bfd8-63d3df847bb9', id:'babiesrus_ebates'},
