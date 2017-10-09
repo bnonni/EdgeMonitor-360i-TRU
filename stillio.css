@@ -748,10 +748,10 @@ button{
     align-items: flex-start;
   }
 
-button{
+.buttons{
     height: 100%;
     width: 7.8%;
-    margin: 10px 0 10px 0;
+    margin: -1px 0 10px 0;
     padding: 5px;
     color: #000000 white;
     text-decoration-style: solid;
