@@ -740,7 +740,7 @@ button{
 
   .buttons-container {  
     margin-top: -2%;
-    margin-left: 0%;
+    margin-left: 2.2%;
     display: flex;
     justify-content: space-between;
     flex-wrap: nowrap;  
