@@ -135,16 +135,24 @@ function addButtons(){  //adds buttons to page  //button tags in array with uniq
 	var buttons = ['<button id="amazon" class="buttons">Amazon</button>',
 	'<button id="walmart" class="buttons">Walmart</button>',
 	'<button id="ebates" class="buttons">Ebates</button>',
-	'<button id="rmn" class="buttons space">RetailMeNot</button>', 
+	'<button id="rmn" class="buttons ">RetailMeNot</button>', 
+	'<button id="groupon" class="buttons space">Groupon</button>',
 	'<button id="walmart_ebates" class="buttons">Ebates Walmart</button>',
 	'<button id="amazon_ebates" class="buttons">Ebates Amazon</button>',
 	'<button id="target_ebates" class="buttons">Ebates Target</button>',
-	'<button id="babiesrus_ebates" class="buttons">Ebates BabiesRUs</button>',
-	'<button id="toysrus_ebates" class="buttons space2">Ebates ToysRUs</button>',
+	'<button id="toysrus_ebates" class="buttons">Ebates ToysRUs</button>',
+	'<button id="babiesrus_ebates" class="buttons space">Ebates BabiesRUs</button>',
 	'<button id="walmart_rmn" class="buttons">RetailMeNot Walmart</button>', 
 	'<button id="amazon_rmn" class="buttons">RetailMeNot Amazon</button>', 
-	'<button id="target_rmn" class="buttons">RetailMeNot Target</button>'];
-	for(i = 0; i < buttons.length-11; i++){//iterates through all <button> tags in buttons array
+	'<button id="target_rmn" class="buttons">RetailMeNot Target</button>',
+	'<button id="toysrus_rmn" class="buttons">RetailMeNot ToysRUs</button>',
+	'<button id="babiesrus_rmn" class="buttons space">RetailMeNot BabiesRus</button>',
+	'<button id="walmart_groupon" class="buttons">Groupon Walmart</button>',
+	'<button id="amazon_groupon" class="buttons">Groupon Amazon</button>',
+	'<button id="target_groupon" class="buttons">Groupon Target</button>',
+	'<button id="toysrus_groupon" class="buttons">Groupon ToysRUs</button>',
+	'<button id="babiesrus_groupon" class="buttons">Groupon BabiesRUs</button>'];
+	for(i = 0; i < buttons.length-19; i++){//iterates through all <button> tags in buttons array
 		$('.buttons-container').append(buttons)//appends each button in array to page
 	}
 	
@@ -156,12 +164,18 @@ function addButtons(){  //adds buttons to page  //button tags in array with uniq
 	{url: 'f3072ad1-0153-4d15-af6f-e5a0edc24646', id:'toysrus_ebates'},
 	{url:'8b1c84a8-3dea-4e05-8f1b-d9aaa0abebeb', id:'amazon_ebates'},
 	{url:'26140e33-c0cc-44ca-bb96-cc6dd9bf5eeb', id:'target_ebates'},
-	{url: 'a29d2d9c-a087-4d27-8e22-251f525ecff6', id:'walmart'},
-	{url: '981313b7-2d2a-47d4-8cdd-54f51ef20e06' , id: 'walmart_rmn'},
-	{url: 'b73abc94-d8d0-492d-a12c-0a429b1ab8c8' , id: 'target_rmn'},
-	{url: 'db310167-d49f-449c-9910-43b08ec6e6d6' , id: 'amazon_rmn'},
-	{url: 'f3f1efae-7710-4bf5-97d4-1d686f840da0' , id: 'rmn'},
-	{url: 'fabd06ba-7ead-4978-b3bd-f33f88b8bbfa' , id: 'ebates'}];
+	{url: '981313b7-2d2a-47d4-8cdd-54f51ef20e06', id: 'walmart_rmn'},
+	{url: 'b73abc94-d8d0-492d-a12c-0a429b1ab8c8', id: 'target_rmn'},
+	{url: 'db310167-d49f-449c-9910-43b08ec6e6d6', id: 'amazon_rmn'},
+	{url: 'ee645e0b-4db7-4b33-8100-41de95acf106', id: 'toysrus_rmn'},
+	{url: 'b232e17e-d054-4788-b7cc-9df4c42dd9ef', id: 'babiesrus_rmn'},
+	{url: 'f3f1efae-7710-4bf5-97d4-1d686f840da0', id: 'rmn'},
+	{url: 'e131279e-b2c5-4134-90d9-15a10f13a24d', id: 'groupon'},
+	{url: '36de5be3-941e-44d1-b7ef-26f37b5c104e', id: 'walmart_groupon'},
+	{url: '38d5bd9f-57bc-42a7-9945-f50c3b7529f4', id: 'amazon_groupon'},
+	{url: 'd1c32fd9-7f6c-4cd4-9aec-ac75e65d587c', id: 'target_groupon'},
+	{url: '040d0d57-f6a4-4ae6-83b6-06059b0cf412', id: 'toysrus_groupon'},
+	{url: '35fb3f03-f553-4210-b378-06c7199d0c4f', id: 'babiesrus_groupon'}];
 	
 	for(var i=0; i < urlIds.length; i++) {//loop to append data-api-urlid to buttons
 		$('#'+urlIds[i].id).attr('data-api-urlid', urlIds[i].url);//calls url value from each key value pair in array and appends to each button as attr

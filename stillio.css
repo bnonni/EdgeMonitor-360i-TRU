@@ -38,7 +38,7 @@
   body {
     color: #FFFFFF;
     background-color: #27292d;
-    overflow: hidden;
+    overflow: visible;
   }
     
   .slider-container {
@@ -989,7 +989,7 @@ button{
   position: absolute;
   z-index: 3;
   display: block;
-  right: 85%;
+  right: 100%;
   top: 50%;
   color: #EEF9FD;
   transform: translateY(-50%);
