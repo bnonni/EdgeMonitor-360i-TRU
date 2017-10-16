@@ -196,11 +196,9 @@ function getJsonText(Url_Ids) { //makes API call, param feeds unique IDs to be a
 	$.ajax({
 		url: "getUrl.php?api_token=qi4P5981S1I0JAB3VWJp5KNKviEopedx8Z4HWINjv7LbdNaTbqX5PzE6RSJM&url_id=" + Url_Ids,
 		type: 'POST',
-		success: function(screenshots) {
-			console.log(screenshots);
-					
-
-let url = base + api_token + api_Url_Ids; //build URL
+		success: function(url) {
+			
+	 //build URL
 	console.log(api_Url_Ids);//checking to make sure data-api-urlid is being passed properly
 	let options = { //options for API call
 		method: 'get',
