@@ -189,11 +189,18 @@ function addButtons(){  //adds buttons to page  //button tags in array with uniq
 }
 
 function getJsonText(api_Url_Ids) { //makes API call, param feeds unique IDs to be appeneded to each button on click and call that unique API
-	var proxy = 'https://cors-anywhere.herokuapp.com/'; //proxy allows for CORS requests
-	var base = 'https://app.stillio.com/api/screenshots?'; //base Stillio URL
-	var apiKey = 'api_token=qi4P5981S1I0JAB3VWJp5KNKviEopedx8Z4HWINjv7LbdNaTbqX5PzE6RSJM&url_id='; //api token
+	//var proxy = 'https://cors-anywhere.herokuapp.com/'; //proxy allows for CORS requests
+	//var base = 'https://app.stillio.com/api/screenshots?'; //base Stillio URL
+	//var api_token = 'api_token=qi4P5981S1I0JAB3VWJp5KNKviEopedx8Z4HWINjv7LbdNaTbqX5PzE6RSJM&url_id='; //api token
 	
-	let url = proxy + base + apiKey + api_Url_Ids; //build URL
+	$.ajax({
+		url: "getStillioUrl.php?api_token=qi4P5981S1I0JAB3VWJp5KNKviEopedx8Z4HWINjv7LbdNaTbqX5PzE6RSJM&url_id=",
+		type: 'POST',
+		success: function(screenshots) {
+			console.log(screenshots);
+					
+
+//	let url = proxy + base + api_token + api_Url_Ids; //build URL
 	console.log(api_Url_Ids);//checking to make sure data-api-urlid is being passed properly
 	let options = { //options for API call
 		method: 'get',
@@ -201,6 +208,7 @@ function getJsonText(api_Url_Ids) { //makes API call, param feeds unique IDs to 
 			'Access-Control-Allow-Origin': '*',
 		}
 	}
+
 
 	fetch(url,options) //fetch method calls API
 	  .then(handleResponse) 
@@ -246,4 +254,5 @@ function getJsonText(api_Url_Ids) { //makes API call, param feeds unique IDs to 
 		  }
 		})
 	}
+}})
 }
