@@ -198,10 +198,9 @@ function getJsonText(Url_Ids) { //makes API call, param feeds unique IDs to be a
 		type: 'POST',
 		success: function(url) {
 			
-	 //build URL
 	console.log(api_Url_Ids);//checking to make sure data-api-urlid is being passed properly
 	let options = { //options for API call
-		method: 'get',
+		method: 'GET',
 		headers: { //headers for API call
 			'Access-Control-Allow-Origin': '*',
 		}
