@@ -194,7 +194,7 @@ function getJsonText(api_Url_Ids) { //makes API call, param feeds unique IDs to 
 	//var api_token = 'api_token=qi4P5981S1I0JAB3VWJp5KNKviEopedx8Z4HWINjv7LbdNaTbqX5PzE6RSJM&url_id='; //api token
 	
 	$.ajax({
-		url: "getStillioUrl.php?api_token=qi4P5981S1I0JAB3VWJp5KNKviEopedx8Z4HWINjv7LbdNaTbqX5PzE6RSJM&url_id=",
+		url: "getStillioUrl.php?api_token=qi4P5981S1I0JAB3VWJp5KNKviEopedx8Z4HWINjv7LbdNaTbqX5PzE6RSJM&url_id=" + api_URL_Ids,
 		type: 'POST',
 		success: function(screenshots) {
 			console.log(screenshots);
@@ -208,7 +208,6 @@ function getJsonText(api_Url_Ids) { //makes API call, param feeds unique IDs to 
 			'Access-Control-Allow-Origin': '*',
 		}
 	}
-
 
 	fetch(url,options) //fetch method calls API
 	  .then(handleResponse) 
