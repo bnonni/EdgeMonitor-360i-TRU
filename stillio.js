@@ -121,6 +121,9 @@ function loadScreenshot(data) {
     left = $('.slider-left');
     right = $('.slider-right');
 	
+		left.off('click');
+		right.off('click');
+
     left.on('click', function() {
       slideLeft();
     });
@@ -160,6 +163,7 @@ function addButtons(){  //adds buttons to page  //button tags in array with uniq
 	{url:'a29d2d9c-a087-4d27-8e22-251f525ecff6', id:'walmart'},
 	{url:'146eeac3-4ab2-48db-80d7-df0f1c75c2e0', id:'walmart_ebates'},
 	{url: '212e608a-3929-4e65-810e-26fafe796f05', id:'amazon'},
+	{url: 'fabd06ba-7ead-4978-b3bd-f33f88b8bbfa', id: 'ebates'},
 	{url: '3c809f22-13f6-49db-bfd8-63d3df847bb9', id:'babiesrus_ebates'},
 	{url: 'f3072ad1-0153-4d15-af6f-e5a0edc24646', id:'toysrus_ebates'},
 	{url:'8b1c84a8-3dea-4e05-8f1b-d9aaa0abebeb', id:'amazon_ebates'},
