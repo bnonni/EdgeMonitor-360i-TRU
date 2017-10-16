@@ -188,13 +188,13 @@ function addButtons(){  //adds buttons to page  //button tags in array with uniq
 	$('.buttons-container button').on('click', function(e) { getJsonText($(this).attr('data-api-urlid')); });//Apply button listener to all buttons in the button container
 }
 
-function getJsonText(api_Url_Ids) { //makes API call, param feeds unique IDs to be appeneded to each button on click and call that unique API
+function getJsonText(Url_Ids) { //makes API call, param feeds unique IDs to be appeneded to each button on click and call that unique API
 	//var proxy = 'https://cors-anywhere.herokuapp.com/'; //proxy allows for CORS requests
 	//var base = 'https://app.stillio.com/api/screenshots?'; //base Stillio URL
 	//var api_token = 'api_token=qi4P5981S1I0JAB3VWJp5KNKviEopedx8Z4HWINjv7LbdNaTbqX5PzE6RSJM&url_id='; //api token
 	
 	$.ajax({
-		url: "getStillioUrl.php?api_token=qi4P5981S1I0JAB3VWJp5KNKviEopedx8Z4HWINjv7LbdNaTbqX5PzE6RSJM&url_id=" + api_URL_Ids,
+		url: "getStillioUrl.php?api_token=qi4P5981S1I0JAB3VWJp5KNKviEopedx8Z4HWINjv7LbdNaTbqX5PzE6RSJM&url_id=" + Url_Ids,
 		type: 'POST',
 		success: function(screenshots) {
 			console.log(screenshots);
