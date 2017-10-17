@@ -4,7 +4,7 @@
 	$stillio_screenshot_base_url = "https://app.stillio.com/api/screenshots";
 	$api_token = ISSET($_GET['api_token']) ? $_GET['api_token'] : null;
 	$url_id = ISSET($_GET['url_id']) ? $_GET['url_id'] : null;
-	$url = $stillio_screenshot_base_url + $api_token + $url_id;
+	
 	//return content
 	if($api_token != null && $url_id != null) {
 		header('Content-Type: application/json');

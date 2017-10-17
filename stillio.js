@@ -188,19 +188,20 @@ function addButtons(){  //adds buttons to page  //button tags in array with uniq
 	$('.buttons-container button').on('click', function(e) { getJsonText($(this).attr('data-api-urlid')); });//Apply button listener to all buttons in the button container
 }
 
-function getJsonText(Url_Ids) { //makes API call, param feeds unique IDs to be appeneded to each button on click and call that unique API
+function getJsonText(url_id) { //makes API call, param feeds unique IDs to be appeneded to each button on click and call that unique API
 	//var proxy = 'https://cors-anywhere.herokuapp.com/'; //proxy allows for CORS requests
 	//var base = 'https://app.stillio.com/api/screenshots?'; //base Stillio URL
-	//var api_token = 'api_token=qi4P5981S1I0JAB3VWJp5KNKviEopedx8Z4HWINjv7LbdNaTbqX5PzE6RSJM&url_id='; //api token
+	var api_token = '?api_token=qi4P5981S1I0JAB3VWJp5KNKviEopedx8Z4HWINjv7LbdNaTbqX5PzE6RSJM&url_id='; //api token
 	
 	$.ajax({
-		url: "getURL.php",
+		url: "getURL.php" + api_token + url_id,
 		type: 'POST',
 		datatype: 'html',
-		success: function($result) {
+		data: url,
+		success: function(data) {
 			
-	console.log(Url_Ids);//checking to make sure data-api-urlid is being passed properly
-	console.log($result);
+	console.log(url_id);//checking to make sure data-api-urlid is being passed properly
+	console.log(data);
 	let options = { //options for API call
 		method: 'GET',
 		headers: { //headers for API call
@@ -208,7 +209,7 @@ function getJsonText(Url_Ids) { //makes API call, param feeds unique IDs to be a
 		}
 	}
 
-	fetch($result,options) //fetch method calls API
+	fetch(url,options) //fetch method calls API
 	  .then(handleResponse) 
 	  .then(data => { loadScreenshot(data);console.log(data); })
 	  .catch(error => console.log(error))
