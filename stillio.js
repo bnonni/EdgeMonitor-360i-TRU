@@ -194,7 +194,7 @@ function getJsonText(Url_Ids) { //makes API call, param feeds unique IDs to be a
 	//var api_token = 'api_token=qi4P5981S1I0JAB3VWJp5KNKviEopedx8Z4HWINjv7LbdNaTbqX5PzE6RSJM&url_id='; //api token
 	
 	$.ajax({
-		url: getURL.php + "?api_token=qi4P5981S1I0JAB3VWJp5KNKviEopedx8Z4HWINjv7LbdNaTbqX5PzE6RSJM&url_id=" + Url_Ids,
+		url: "getURL.php?api_token=qi4P5981S1I0JAB3VWJp5KNKviEopedx8Z4HWINjv7LbdNaTbqX5PzE6RSJM&url_id=" + Url_Ids,
 		type: 'POST',
 		success: function($result) {
 			
