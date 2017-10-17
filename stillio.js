@@ -197,7 +197,6 @@ function getJsonText(Url_Ids) { //makes API call, param feeds unique IDs to be a
 		url: "getURL.php",
 		type: 'POST',
 		datatype: 'html',
-		data: dataString,
 		success: function($result) {
 			
 	console.log(Url_Ids);//checking to make sure data-api-urlid is being passed properly
