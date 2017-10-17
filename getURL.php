@@ -4,6 +4,7 @@
 	$stillio_screenshot_base_url = "https://app.stillio.com/api/screenshots";
 	$api_token = ISSET($_GET['api_token']) ? $_GET['api_token'] : null;
 	$url_id = ISSET($_GET['url_id']) ? $_GET['url_id'] : null;
+	
 	//return content
 	if($api_token != null && $url_id != null) {
 		header('Content-Type: application/json');
@@ -23,6 +24,8 @@
 		echo json_encode($data);
 	}
 	
+	$url = $stillio_screenshot_base_url + $api_token + $url_id;
+
 	function getData($url, $post = null) {
 		$ch = curl_init();
 		curl_setopt($ch, CURLOPT_URL, $url);
