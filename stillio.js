@@ -197,11 +197,10 @@ function getJsonText(url_id) { //makes API call, param feeds unique IDs to be ap
 		url: "getURL.php" + api_token + url_id,
 		type: 'POST',
 		datatype: 'html',
-		data: url,
-		success: function(data) {
+		success: function(datatype) {
 			
 	console.log(url_id);//checking to make sure data-api-urlid is being passed properly
-	console.log(data);
+	console.log(datatype);
 	let options = { //options for API call
 		method: 'GET',
 		headers: { //headers for API call
