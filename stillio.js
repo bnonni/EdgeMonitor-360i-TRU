@@ -189,16 +189,16 @@ function addButtons(){  //adds buttons to page  //button tags in array with uniq
 }
 
 function getJsonText(url_id) { //makes API call, param feeds unique IDs to be appeneded to each button on click and call that unique API
-	//var proxy = 'https://cors-anywhere.herokuapp.com/'; //proxy allows for CORS requests
-	//var base = 'https://app.stillio.com/api/screenshots?'; //base Stillio URL
+	var proxy = 'https://cors-anywhere.herokuapp.com/'; //proxy allows for CORS requests
+	var base = 'https://app.stillio.com/api/screenshots?'; //base Stillio URL
 	var api_token = '?api_token=qi4P5981S1I0JAB3VWJp5KNKviEopedx8Z4HWINjv7LbdNaTbqX5PzE6RSJM&url_id='; //api token
 	
-	$.ajax({
-		url: "getURL.php" + api_token + url_id,
-		type: 'POST',
-		datatype: 'html',
-		success: function(datatype) {
-			
+	// $.ajax({
+	// 	url: "getURL.php" + api_token + url_id,
+	// 	type: 'POST',
+	// 	datatype: 'html',
+	// 	success: function(datatype) {
+	let url = proxy + base + api_token + url_id;
 	console.log(url_id);//checking to make sure data-api-urlid is being passed properly
 	console.log(datatype);
 	let options = { //options for API call
@@ -252,5 +252,5 @@ function getJsonText(url_id) { //makes API call, param feeds unique IDs to be ap
 		  }
 		})
 	}
-}})
+
 }

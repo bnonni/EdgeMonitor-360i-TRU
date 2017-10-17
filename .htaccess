@@ -4,4 +4,3 @@ AddHandler php5-script .php .html .htm
 AddType application/x-httpd-php .htm 
 AddType application/x-httpd-php .html
 php_flag short_open_tag off
-short_open_tag = Off
