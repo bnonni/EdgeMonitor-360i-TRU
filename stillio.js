@@ -199,6 +199,7 @@ function getJsonText(Url_Ids) { //makes API call, param feeds unique IDs to be a
 		success: function($result) {
 			
 	console.log(Url_Ids);//checking to make sure data-api-urlid is being passed properly
+	console.log($result);
 	let options = { //options for API call
 		method: 'GET',
 		headers: { //headers for API call
