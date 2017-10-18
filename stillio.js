@@ -190,7 +190,7 @@ function addButtons(){  //adds buttons to page  //button tags in array with uniq
 
 function getJsonText(url_id) { //makes API call, param feeds unique IDs to be appeneded to each button on click and call that unique API
 	var proxy = 'https://cors-anywhere.herokuapp.com/'; //proxy allows for CORS requests
-	var base = 'https://app.stillio.com/api/screenshots?'; //base Stillio URL
+	var base = 'https://app.stillio.com/api/screenshots'; //base Stillio URL
 	var api_token = '?api_token=qi4P5981S1I0JAB3VWJp5KNKviEopedx8Z4HWINjv7LbdNaTbqX5PzE6RSJM&url_id='; //api token
 	
 	// $.ajax({
@@ -204,7 +204,7 @@ function getJsonText(url_id) { //makes API call, param feeds unique IDs to be ap
 	let options = { //options for API call
 		method: 'GET',
 		headers: { //headers for API call
-			'Access-Control-Allow-Origin': 'https://app.stillio.com/',
+			'Access-Control-Allow-Origin': '*',
 		}
 	}
 
