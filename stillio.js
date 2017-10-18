@@ -200,11 +200,11 @@ function getJsonText(url_id) { //makes API call, param feeds unique IDs to be ap
 	// 	success: function(datatype) {
 	let url = proxy + base + api_token + url_id;
 	console.log(url_id);//checking to make sure data-api-urlid is being passed properly
-	console.log(datatype);
+	//console.log(datatype);
 	let options = { //options for API call
 		method: 'GET',
 		headers: { //headers for API call
-			'Access-Control-Allow-Origin': '*',
+			'Access-Control-Allow-Origin': 'https://app.stillio.com/',
 		}
 	}
 
