@@ -1,4 +1,5 @@
 <?php
+	require 'vendor/autoload.php';
 	//Get url from jQuery
 	//https://app.stillio.com/api/screenshots?api_token=qi4P5981S1I0JAB3VWJp5KNKviEopedx8Z4HWINjv7LbdNaTbqX5PzE6RSJM&url_id=3c809f22-13f6-49db-bfd8-63d3df847bb9
 	$stillio_screenshot_base_url = "https://app.stillio.com/api/screenshots";

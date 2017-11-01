@@ -139,23 +139,26 @@ function addButtons(){  //adds buttons to page  //button tags in array with uniq
 	'<button id="walmart" class="buttons">Walmart</button>',
 	'<button id="ebates" class="buttons">Ebates</button>',
 	'<button id="rmn" class="buttons ">RetailMeNot</button>', 
-	'<button id="groupon" class="buttons space">Groupon</button>',
+	'<button id="groupon" class="buttons">Groupon</button>',
+	'<button id="buybuy" class="buttons space">BuyBuyBaby</button>',
 	'<button id="walmart_ebates" class="buttons">Ebates Walmart</button>',
 	'<button id="amazon_ebates" class="buttons">Ebates Amazon</button>',
 	'<button id="target_ebates" class="buttons">Ebates Target</button>',
 	'<button id="toysrus_ebates" class="buttons">Ebates ToysRUs</button>',
-	'<button id="babiesrus_ebates" class="buttons space">Ebates BabiesRUs</button>',
+	'<button id="babiesrus_ebates" class="buttons">Ebates BabiesRUs</button>',
+	'<button id="buybuy_ebates" class="buttons space">Ebates BuyBuyBaby</button>',
 	'<button id="walmart_rmn" class="buttons">RetailMeNot Walmart</button>', 
 	'<button id="amazon_rmn" class="buttons">RetailMeNot Amazon</button>', 
 	'<button id="target_rmn" class="buttons">RetailMeNot Target</button>',
 	'<button id="toysrus_rmn" class="buttons">RetailMeNot ToysRUs</button>',
-	'<button id="babiesrus_rmn" class="buttons space">RetailMeNot BabiesRus</button>',
+	'<button id="babiesrus_rmn" class="buttons">RetailMeNot BabiesRus</button>',
+	'<button id="buybuy_rmn" class="buttons space">RetailMeNot BuyBuyBaby</button>',
 	'<button id="walmart_groupon" class="buttons">Groupon Walmart</button>',
 	'<button id="amazon_groupon" class="buttons">Groupon Amazon</button>',
 	'<button id="target_groupon" class="buttons">Groupon Target</button>',
 	'<button id="toysrus_groupon" class="buttons">Groupon ToysRUs</button>',
 	'<button id="babiesrus_groupon" class="buttons">Groupon BabiesRUs</button>'];
-	for(i = 0; i < buttons.length-19; i++){//iterates through all <button> tags in buttons array
+	for(i = 0; i < buttons.length-22; i++){//iterates through all <button> tags in buttons array
 		$('.buttons-container').append(buttons)//appends each button in array to page
 	}
 	
@@ -164,6 +167,9 @@ function addButtons(){  //adds buttons to page  //button tags in array with uniq
 	{url:'146eeac3-4ab2-48db-80d7-df0f1c75c2e0', id:'walmart_ebates'},
 	{url: '212e608a-3929-4e65-810e-26fafe796f05', id:'amazon'},
 	{url: 'fabd06ba-7ead-4978-b3bd-f33f88b8bbfa', id: 'ebates'},
+	{url: '54c8d21d-442e-4e8f-a079-597d7980e749', id: 'buybuy'},
+	{url: '5b6c4169-a89b-4c03-8321-b77a56282a45', id: 'buybuy_ebates'},
+	{url: '6cb55bc4-6dbe-4459-8607-2ca3a6848b33', id: 'buybuy_rmn'},
 	{url: '3c809f22-13f6-49db-bfd8-63d3df847bb9', id:'babiesrus_ebates'},
 	{url: 'f3072ad1-0153-4d15-af6f-e5a0edc24646', id:'toysrus_ebates'},
 	{url:'8b1c84a8-3dea-4e05-8f1b-d9aaa0abebeb', id:'amazon_ebates'},
@@ -184,21 +190,22 @@ function addButtons(){  //adds buttons to page  //button tags in array with uniq
 	for(var i=0; i < urlIds.length; i++) {//loop to append data-api-urlid to buttons
 		$('#'+urlIds[i].id).attr('data-api-urlid', urlIds[i].url);//calls url value from each key value pair in array and appends to each button as attr
 	}
-	
-	$('.buttons-container button').on('click', function(e) { getJsonText($(this).attr('data-api-urlid')); });//Apply button listener to all buttons in the button container
-}
+
+	$('.buttons-container button').on('click', function(e) {
+		getJsonText($(this).attr('data-api-urlid'));
+		});//Apply button listener to all buttons in the button container
+
 
 function getJsonText(url_id) { //makes API call, param feeds unique IDs to be appeneded to each button on click and call that unique API
 	var proxy = 'https://cors-anywhere.herokuapp.com/'; //proxy allows for CORS requests
 	var base = 'https://app.stillio.com/api/screenshots'; //base Stillio URL
 	var api_token = '?api_token=qi4P5981S1I0JAB3VWJp5KNKviEopedx8Z4HWINjv7LbdNaTbqX5PzE6RSJM&url_id='; //api token
+	var url = proxy + base + api_token + url_id;
+	//$.ajax({
+	 	//url: url,
+	 //	type: 'POST',
+	 	//success: function() {
 	
-	// $.ajax({
-	// 	url: "getURL.php" + api_token + url_id,
-	// 	type: 'POST',
-	// 	datatype: 'html',
-	// 	success: function(datatype) {
-	let url = proxy + base + api_token + url_id;
 	console.log(url_id);//checking to make sure data-api-urlid is being passed properly
 	//console.log(datatype);
 	let options = { //options for API call
@@ -212,7 +219,7 @@ function getJsonText(url_id) { //makes API call, param feeds unique IDs to be ap
 	  .then(handleResponse) 
 	  .then(data => { loadScreenshot(data);console.log(data); })
 	  .catch(error => console.log(error))
-		
+	
 	//handles possible response from API
 	function handleResponse(response) {
 	  let contentType = response.headers.get('content-type')
@@ -247,10 +254,26 @@ function getJsonText(url_id) { //makes API call, param feeds unique IDs to be ap
 			return Promise.reject({
 			  status: response.status,
 			  statusText: response.statusText,
-			  err: text
-			})
-		  }
-		})
+				err: text
+						})
+					}
+				})
+			}
+		}//end success function
 	}
-
-}
+	//})//end ajax
+//}//end getJSON
+//}
+// function addClass(url_id){
+// if(url_id == 'fabd06ba-7ead-4978-b3bd-f33f88b8bbfa'){ 
+// 		$('.slider-content').removeAttr('id', 'walmart_images' )
+// 		$('.slider-content').attr('id', 'ebates_images')
+// 	}
+// else if(url_id == 'a29d2d9c-a087-4d27-8e22-251f525ecff6'){ //walmart id
+// 	$('.slider-content').removeAttr('id', 'ebates_images')
+// 	$('.slider-content').attr('id', 'walmart_images')
+// 	}
+// 	else{
+// 		$('.slider-content').removeAttr('ebates_images groupon_images walmart_images')
+// 		}
+// }
