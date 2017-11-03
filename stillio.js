@@ -80,8 +80,16 @@ function slideLeft() {
 var slider_template = '<div class="slider-single"><a class="slider-single-download" href="javascript:void(0);">Download <i class="fa fa-download"></i></a></div>';
 
 function loadScreenshot(data) {
-	var json = JSON.parse(data);
-	var screenshots = json.screenshots;
+	var json, screenshots, slider_images;
+	
+	try{
+	 json = JSON.parse(data);
+	 screenshots = json.screenshots;
+	}catch (error){
+	}finally{
+		json = data;
+		screenshots = json.screenshots;
+	}
 	var slider_images="";
 	
 	$('.slider-content').empty();
@@ -191,21 +199,16 @@ function addButtons(){  //adds buttons to page  //button tags in array with uniq
 		$('#'+urlIds[i].id).attr('data-api-urlid', urlIds[i].url);//calls url value from each key value pair in array and appends to each button as attr
 	}
 
-	$('.buttons-container button').on('click', function(e) {
-		getJsonText($(this).attr('data-api-urlid'));
-		});//Apply button listener to all buttons in the button container
-
+	$('.buttons-container button').on('click', function(e) {getJsonText($(this).attr('data-api-urlid'));});//Apply button listener to all buttons in the button container
+}
 
 function getJsonText(url_id) { //makes API call, param feeds unique IDs to be appeneded to each button on click and call that unique API
-	var proxy = 'https://cors-anywhere.herokuapp.com/'; //proxy allows for CORS requests
-	var base = 'https://app.stillio.com/api/screenshots'; //base Stillio URL
-	var api_token = '?api_token=qi4P5981S1I0JAB3VWJp5KNKviEopedx8Z4HWINjv7LbdNaTbqX5PzE6RSJM&url_id='; //api token
-	var url = proxy + base + api_token + url_id;
-	//$.ajax({
-	 	//url: url,
-	 //	type: 'POST',
-	 	//success: function() {
-	
+	var api_token = 'api_token=qi4P5981S1I0JAB3VWJp5KNKviEopedx8Z4HWINjv7LbdNaTbqX5PzE6RSJM&url_id='; //api token
+	var url = 'getURL.php?' + api_token + url_id;
+	$.ajax({
+	  url: url,
+	  type: 'POST',
+	 	success: function() {
 	console.log(url_id);//checking to make sure data-api-urlid is being passed properly
 	//console.log(datatype);
 	let options = { //options for API call
@@ -260,9 +263,9 @@ function getJsonText(url_id) { //makes API call, param feeds unique IDs to be ap
 				})
 			}
 		}//end success function
-	}
-	//})//end ajax
-//}//end getJSON
+	})//end ajax
+ }//end getJSON
+
 //}
 // function addClass(url_id){
 // if(url_id == 'fabd06ba-7ead-4978-b3bd-f33f88b8bbfa'){ 
